@@ -1,0 +1,249 @@
+openapi: 3.0.3
+info:
+  title: 'Pet PHP Laravel 11'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'https://demo-php-laravel11.giau.info'
+paths:
+  /api/register:
+    post:
+      summary: ''
+      operationId: postApiRegister
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: fqafqqnfpxe
+                  nullable: false
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must not be greater than 255 characters.'
+                  example: adicki@example.net
+                  nullable: false
+                password:
+                  type: string
+                  description: 'Must be at least 8 characters.'
+                  example: "O0>=g'c)m=r"
+                  nullable: false
+              required:
+                - name
+                - email
+                - password
+      security: []
+  /api/login:
+    post:
+      summary: ''
+      operationId: postApiLogin
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: wade05@example.org
+                  nullable: false
+                password:
+                  type: string
+                  description: ''
+                  example: vel
+                  nullable: false
+              required:
+                - email
+                - password
+      security: []
+  /api/logout:
+    post:
+      summary: ''
+      operationId: postApiLogout
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/tasks:
+    get:
+      summary: 'Display a listing of the resource.'
+      operationId: displayAListingOfTheResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: xnkqroamri
+                  nullable: false
+                description:
+                  type: string
+                  description: ''
+                  example: 'Odio velit minus ut.'
+                  nullable: true
+                status:
+                  type: string
+                  description: ''
+                  example: pending
+                  nullable: false
+                  enum:
+                    - pending
+                    - in_progress
+                    - completed
+                due_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2025-01-19T14:01:13'
+                  nullable: true
+                priority:
+                  type: integer
+                  description: 'Must be at least 1. Must not be greater than 5.'
+                  example: 2
+                  nullable: false
+              required:
+                - title
+                - status
+                - priority
+      security: []
+  '/api/tasks/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: xlhetcgmkuwxpiecceeqib
+                  nullable: false
+                description:
+                  type: string
+                  description: ''
+                  example: 'Maiores porro animi non ea.'
+                  nullable: true
+                status:
+                  type: string
+                  description: ''
+                  example: in_progress
+                  nullable: false
+                  enum:
+                    - pending
+                    - in_progress
+                    - completed
+                due_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2025-01-19T14:01:13'
+                  nullable: true
+                priority:
+                  type: integer
+                  description: 'Must be at least 1. Must not be greater than 5.'
+                  example: 3
+                  nullable: false
+              required:
+                - title
+                - status
+                - priority
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the task.'
+        example: 5
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Endpoints
+    description: ''
